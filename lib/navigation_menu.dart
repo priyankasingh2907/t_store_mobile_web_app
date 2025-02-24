@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:t_store/utils/helpers/helper_functions.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -8,6 +9,7 @@ class NavigationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationMenuController());
+    final darkMode = THelperFunctions.isDarkMode(context);
 
     return Scaffold(
       //navigation menu
@@ -19,6 +21,8 @@ class NavigationMenu extends StatelessWidget {
           onDestinationSelected: (index) {
             controller.selectedIndex.value = index;
           },
+          backgroundColor: darkMode ? Colors.black : Colors.white,
+          indicatorColor: darkMode ? Colors.white.withAlpha((0.1 * 255).toInt()) : Colors.black.withAlpha((0.1 * 255).toInt()),
           destinations: const [
             NavigationDestination(icon: Icon(Iconsax.home), label: 'home'),
             NavigationDestination(
