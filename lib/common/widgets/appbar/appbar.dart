@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/device/device_utility.dart';
 
@@ -9,14 +10,14 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showBackArrow = false,
     this.leadingIcon,
     this.actions,
-    this.onLeadingPressed,
+    this.leadingPressed,
   });
-
+ 
   final Widget? title;
   final bool showBackArrow;
   final IconData? leadingIcon;
   final List<Widget>? actions;
-  final VoidCallback? onLeadingPressed;
+  final VoidCallback? leadingPressed;
   
 
   @override
@@ -26,10 +27,13 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       leading: showBackArrow
           ? IconButton(
-              icon: Icon(leadingIcon ?? Icons.arrow_back),
-                onPressed: onLeadingPressed ?? () => Get.back(),
+              icon: const Icon(Iconsax.arrow_left),
+                onPressed:() => Get.back(),
             )
-          : null,
+          :leadingIcon !=null? IconButton(
+              icon:  Icon(leadingIcon),
+                onPressed:leadingPressed,
+            ):null,
           title: title,
           actions: actions,
     ),);
