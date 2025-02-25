@@ -13,7 +13,7 @@ class THomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TPrimaryWidgetConatiner(child: Column(children: [TAppBar(
+    return TPrimaryHeaderContainer(child: Column(children: [TAppBar(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
